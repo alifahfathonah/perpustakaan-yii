@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\KategoriSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kategoris';
+$this->title = 'Kategori';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kategori-index">
@@ -25,10 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            
             'nama',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

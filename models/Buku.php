@@ -46,11 +46,28 @@ class Buku extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'judul' => 'Judul',
-            'id_kategori' => 'Id Kategori',
-            'id_penulis' => 'Id Penulis',
-            'id_penerbit' => 'Id Penerbit',
+            'id_kategori' => 'Kategori',
+            'id_penulis' => 'Penulis',
+            'id_penerbit' => 'Penerbit',
             'sinopsis' => 'Sinopsis',
             'tahun_terbit' => 'Tahun Terbit',
         ];
     }
+
+    public function getKategori()
+    {
+        return $this->hasOne(Kategori::class,['id' => 'id_kategori']);
+    }
+
+    public function getPenulis()
+    {
+        return $this->hasOne(Penulis::class,['id' => 'id_penulis']);
+    }
+
+    public function getPenerbit()
+    {
+        return $this->hasOne(Penerbit::class,['id' => 'id_penerbit']);
+    }
+
 }
+

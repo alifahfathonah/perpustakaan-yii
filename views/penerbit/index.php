@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PenerbitSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Penerbits';
+$this->title = 'Penerbit';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="penerbit-index">
@@ -25,8 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            
             'nama',
             'telepon',
             'email:email',

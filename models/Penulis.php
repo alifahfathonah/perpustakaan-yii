@@ -48,4 +48,16 @@ class Penulis extends \yii\db\ActiveRecord
             'alamat' => 'Alamat',
         ];
     }
+
+    public function getManyBuku()
+    {
+        return $this->hasMany(Buku::class,['id_penulis' => 'id']);
+    }
+
+    public function findAllBuku()
+    {
+        return $this->manyBuku;
+    }
+
+
 }

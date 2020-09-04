@@ -41,4 +41,14 @@ class Kategori extends \yii\db\ActiveRecord
             'nama' => 'Nama',
         ];
     }
+
+    public function getManyBuku()
+    {
+        return $this->hasMany(Buku::class,['id_kategori' => 'id']);
+    }
+
+    public function findAllBuku()
+    {
+        return $this->manyBuku;
+    }
 }

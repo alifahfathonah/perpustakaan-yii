@@ -1,5 +1,6 @@
 <?php
 
+use miloschuman\highcharts\Highcharts;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -51,3 +52,23 @@ $this->title = 'My Yii Application';
 
     </div>
 </div>
+
+<h2>Grafik Penerbit</h2>
+<?php 
+echo Highcharts::widget([
+    'options' => [
+        'chart' => [
+            'type' => 'column'
+        ],
+       'title' => ['text' => 'Fruit Consumption'],
+       'xAxis' => [
+          'categories' => ['Gramedia', 'Republika', 'Erlangga']
+       ],
+       'yAxis' => [
+          'title' => ['text' => 'Fruit eaten']
+       ],
+       'series' => [
+          ['name' => 'Jane', 'data' => [1, 3, 4]],
+       ]
+    ]
+ ]); ?>

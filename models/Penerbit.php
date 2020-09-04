@@ -48,4 +48,14 @@ class Penerbit extends \yii\db\ActiveRecord
             'alamat' => 'Alamat',
         ];
     }
+
+    public function getManyBuku()
+    {
+        return $this->hasMany(Buku::class,['id_penerbit' => 'id']);
+    }
+
+    public function findAllBuku()
+    {
+        return $this->manyBuku;
+    }
 }

@@ -2,12 +2,16 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
+use app\models\Penerbit;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Penerbit */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Penerbits', 'url' => ['index']];
+// var_dump($listBuku);
+
+$this->title = $model->nama;
+$this->params['breadcrumbs'][] = ['label' => 'Penerbit', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -29,12 +33,34 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'nama',
             'telepon',
             'email:email',
             'alamat:ntext',
         ],
-    ]) ?>
+    ]) ?>  
 
+    <table class="table table-bordered">
+        <thead>
+            <th style="width:50px">No</th>
+            <th>Daftar Buku</th>
+            <th>Aksi</th>
+        </thead>
+        <tbody>
+            <?php $no = 1;?>
+            <?php foreach($model->findAllBuku() as $buku) { ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $buku->judul ?></td>
+                    <td>
+                    <?= Html::a('Edit', ['buku/update', 'id' => $buku->id], ['class' => 'btn btn-primary']) ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>  
+    
 </div>
+
+
+

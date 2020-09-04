@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Kategori;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Kategori */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Kategoris', 'url' => ['index']];
+$this->title = $model->nama;
+$this->params['breadcrumbs'][] = ['label' => 'Kategori', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -25,13 +26,25 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nama',
-        ],
-    ]) ?>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <th style="width:50px">No</th>
+            <th>Daftar Buku</th>
+            <th>Aksi</th>
+        </thead>
+        <tbody>
+            <?php $no = 1;?>
+            <?php foreach($model->findAllBuku() as $buku) { ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $buku->judul ?></td>
+                    <td>
+                    <?= Html::a('Edit', ['buku/update', 'id' => $buku->id], ['class' => 'btn btn-primary']) ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>  
 
 </div>

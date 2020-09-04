@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\BukuSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bukus';
+$this->title = 'Buku';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="buku-index">
@@ -25,12 +25,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'judul',
-            'id_kategori',
-            'id_penulis',
-            'id_penerbit',
+            [
+                'label' => 'Kategori',
+                'attribute' => 'id_kategori',
+                'value' => function($data) {
+                    return @$data->kategori->nama;
+                }
+            ],
+            [
+                'label' => 'Penulis',
+                'attribute' => 'id_penulis',
+                'value' => function($data) {
+                    return $data->penulis->nama;
+                }
+            ],
+            [
+                'label' => 'Penerbit',
+                'attribute' => 'id_penerbit',
+                'value' => function($data) {
+                    return $data->penerbit->nama;
+                }
+            ],
             //'sinopsis:ntext',
             //'tahun_terbit',
 

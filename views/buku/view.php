@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Buku */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Bukus', 'url' => ['index']];
+$this->title = $model->judul;
+$this->params['breadcrumbs'][] = ['label' => 'Buku', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -29,11 +29,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+    
             'judul',
-            'id_kategori',
-            'id_penulis',
-            'id_penerbit',
+            [
+                'label' => 'Kategori',
+                'attribute' => 'id_kategori',
+                'value' => $model->kategori->nama
+            ],
+            [
+                'label' => 'Penulis',
+                'attribute' => 'id_penulis',
+                'value' => $model->penulis->nama
+            ],
+            [
+                'label' => 'Penerbit',
+                'attribute' => 'id_penerbit',
+                'value' => $model->penerbit->nama
+            ],
             'sinopsis:ntext',
             'tahun_terbit',
         ],

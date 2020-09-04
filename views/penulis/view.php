@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Penulis */
 
-$this->title = $model->id;
+$this->title = $model->nama;
 $this->params['breadcrumbs'][] = ['label' => 'Penulis', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -29,12 +29,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+           
             'nama',
             'telepon',
             'email:email',
             'alamat:ntext',
         ],
     ]) ?>
+
+    <table class="table table-bordered">
+        <thead>
+            <th style="width:50px">No</th>
+            <th>Daftar Buku</th>
+            <th>Aksi</th>
+        </thead>
+        <tbody>
+            <?php $no = 1;?>
+            <?php foreach($model->findAllBuku() as $buku) { ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $buku->judul ?></td>
+                    <td>
+                    <?= Html::a('Edit', ['buku/update', 'id' => $buku->id], ['class' => 'btn btn-primary']) ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table> 
 
 </div>
